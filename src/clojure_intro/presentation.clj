@@ -26,7 +26,29 @@
 
 
 
-"Some history"
+(def clojure-features
+  ;Will cover today
+  :repl
+
+  :first-class-functions
+  :immutable-data-structures
+  :recursive-looping
+  :lazy-sequences
+
+  ;Won't be covered
+  :concurrent-programming [:stm :refs :atoms :agents :vars]
+
+  :runtime-polymorphism [:proxy :multi-methods :protocols :datatypes]
+
+  :macros
+
+  :hosted-on-jvm)
+
+
+
+
+
+
 
 (def data-types
   {:numbers   [1 1234N 1.234 1.234M (/ 2 3)]
@@ -51,7 +73,9 @@
 
 ;defining-symbols
 (def some-string "str")
+
 (def some-vector [1 2 3 4 5])
+
 (def some-map [1 2 3 4 5])
 
 
@@ -60,6 +84,7 @@
 ;calling-functions
 ;C => println("arg1", "arg2")
 (println "arg1" "arg2")
+
 ;C => ((1 + 2) * (3 + 4)) / 2
 (/ (* (+ 1 2) (+ 3 4)) 2)
 
@@ -74,19 +99,22 @@
 (defn two-arg-println2 [arg1 arg2]
   (println arg1 arg2))
 
-
-
-
 ; symbol-metadata
-(meta +)
+(meta #'+)
+
 (with-meta two-arg-println {:doc "Example of function definition"})
+
 (defn ^{:doc "Example of calling functions"} some-documented-function [] (println "Hi"))
+
 (defn some-doc-fn  "This is a documentation" [] (println "Me is some function"))
+
 (defn ^String returns-string [^Integer i ^String text] (println i text))
 
 ; true or false?
 (and true "I am true")
+
 (and false "I am not true")
+
 (and nil "I am not true")
 
 
