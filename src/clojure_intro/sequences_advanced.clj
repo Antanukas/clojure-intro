@@ -5,6 +5,7 @@
 
 ;=> (tails '(1 2 3 4))
 ;=> ((1 2 3 4) (2 3 4) (3 4) (4) ())
+; (cons '(1 2 3) 5) => (5 1 2 3)
 (defn tails [coll]
   (cons coll (map (fn [item] (drop item coll)) coll)))
 
@@ -26,3 +27,11 @@
 ;conj for lists
 (defn my-reverse [coll]
   (reduce (fn [acc-list, elem] (conj acc-list elem)) '() coll))
+
+;Write the function my-map that works just like standard map.
+;It takes one or more sequences and a function f that takes as many
+;parameters as there are sequences
+(defn my-map [f & colls]
+  (let [zipped (partition (count colls) (apply interleave colls))
+        func (fn [acc seq-elem] (cons (apply f seq-elem) acc))]
+    (reduce func (empty zipped) zipped)))

@@ -1,11 +1,9 @@
 (ns clojure-intro.basics-test
   (:require [clojure.test :refer :all]
-            [clojure-intro.core :refer :all]
             [clojure-intro.basics :refer :all]
             [clojure.test.check.generators :as gen]
             [clojure.test.check.properties :as prop]
-            [clojure.test.check.clojure-test :refer [defspec]]
-            [clojure.test.check :as tc]))
+            [clojure.test.check.clojure-test :refer [defspec]]))
 
 (defn- fn-test
   ([my-fn correct-fn gen]
