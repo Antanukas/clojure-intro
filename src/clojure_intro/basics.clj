@@ -13,6 +13,7 @@
 (defn divide [x y]
   (/ x y))
 
+;TODO describe apply
 (defn multiply [& args]
   (apply * args))
 
@@ -45,3 +46,32 @@
 ;Hint use smth from above
 (defn first-not-null [& args]
   (some identity args))
+
+;Collections
+(defn give-me-some-vector []
+  [1 2 3 4 5])
+
+;TODO comma thing
+(defn give-me-some-list []
+    '(1 2 3 4 5))
+
+(defn give-me-some-maps []
+  ;return vector containing hashmaps and sorted maps
+  [{1 2 3 4 5} (sorted-map 4 6 2)])
+
+(defn give-me-some-sets []
+  ;return vector containing hashsets and sorted sets
+  [#{1 2 3 4 5} (sorted-set 2 3 1 5)])
+
+(defn make-list [e1 & rest]
+  (list (conj rest e1)))
+
+(defn make-vector [e1 & rest]
+  (vec (conj rest e1)))
+
+(defn make-hash-map [& entries]
+  (apply hash-map entries))
+
+(defn make-set [& values]
+  (set values))
+
