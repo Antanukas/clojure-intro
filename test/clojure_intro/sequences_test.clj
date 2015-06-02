@@ -22,13 +22,18 @@
   (is (= '(2) (filter (set->predicate #{1 2 3}) [0 2 4 6])))
   (is (= '(2 nil nil) (filter (set->predicate #{1 2 3 nil}) [2 nil 4 nil 6]))))
 
+(defspec first-not-null-test 200
+  (prop/for-all [x (gen/such-that (complement empty?) (gen/vector gen/string))]
+    (= (apply first-not-null x) (some identity x))))
+
+
 (deftest pred-and-test
   (is (= [2 6] (filter (pred-and pos? even?) [1 2 -4 0 6 7 -3])))
   (is (= [1 7] (filter (pred-and pos? odd?) [1 2 -4 0 6 7 -3])))
   (is (= [[] '() {} #{}] (filter (pred-and (complement nil?) empty?) [[] '() nil {} #{}]))))
 
-(defspec blank?-test 100
-  (prop/for-all [s gen/string]
+(defspec blank?-test 1000
+  (prop/for-all [s (gen/one-of [gen/string (gen/return nil)])]
     (= (blank? s) (clojure.string/blank? s))))
 
 (defspec give-me-odds-test 100
@@ -48,7 +53,7 @@
   (prop/for-all [coll1 (gen/vector gen/int)
                  coll2 (gen/vector gen/char)
                  x gen/string]
-    (= (concat-me-collections x coll1 coll2) (flatten [x coll1 coll2]))))
+    (= (append-and-concat x coll1 coll2) (flatten [x coll1 coll2]))))
 
 (defspec duplicate-five-times-test 100
   (prop/for-all [x gen/string]
@@ -57,7 +62,7 @@
 (defspec did-you-try-interleave?-test 100
   (prop/for-all [coll1 (gen/vector gen/int)
                  coll2 (gen/vector gen/int)]
-    (= (did-you-try-interleave? coll1 coll2) (interleave coll1 coll2))))
+    (= (sutarpuok-dvi-kolekcijas coll1 coll2) (interleave coll1 coll2))))
 
 (defspec insert-zero-in-between-test 100
   (prop/for-all [coll (gen/vector gen/string)]

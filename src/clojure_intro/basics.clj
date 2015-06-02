@@ -43,10 +43,6 @@
 (defn my-is-nil? [x]
   (nil? x))
 
-;Hint use smth from above
-(defn first-not-null [& args]
-  (some identity args))
-
 ;Collections
 (defn give-me-some-vector []
   [1 2 3 4 5])
@@ -57,7 +53,7 @@
 
 (defn give-me-some-maps []
   ;return vector containing hashmaps and sorted maps
-  [{1 2 3 4 5} (sorted-map 4 6 2)])
+  [{1 2 3 4} (sorted-map 4 6 2)])
 
 (defn give-me-some-sets []
   ;return vector containing hashsets and sorted sets

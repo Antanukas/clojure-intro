@@ -57,7 +57,3 @@
 
 (defspec my-nil-test 100
   (fn-test my-is-nil? nil? gen/int))
-
-(defspec first-not-null-test 200
-  (prop/for-all [x (gen/such-that (complement empty?) (gen/vector gen/string))]
-    (= (apply first-not-null x) (some identity x))))
