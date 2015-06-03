@@ -8,8 +8,8 @@
   (:import (java.net NetworkInterface)))
 
 ;If doesn't work write by hand like this
-;(def my-ip "localhost")
-(def my-ip
+(def my-ip "localhost")
+(comment (def my-ip
   (->>
     (enumeration-seq (NetworkInterface/getNetworkInterfaces))
     (filter #(= (.getName %) "eth0"))
@@ -18,7 +18,7 @@
     (map #(.getAddress %))
     (map #(.getHostAddress %))
     (filter (partial re-find #"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"))
-    (first)))
+    (first))))
 (def my-address (str my-ip ":3000"))
 
 (def configuration
@@ -27,7 +27,7 @@
                  {:host "localhost:3002" :name "3002"}
                  {:host "localhost:3003" :name "3003"}
                  {:host "localhost:3004" :name "3004"}]
-   :probability (/ 1 10)})
+   :probability (/ 1 200)})
 
 ;Some state
 (def last-loto-result (atom []))
