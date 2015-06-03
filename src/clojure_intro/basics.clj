@@ -53,14 +53,14 @@
 
 (defn give-me-some-maps []
   ;return vector containing hashmaps and sorted maps
-  [{1 2 3 4} (sorted-map 4 6 2)])
+  [{1 2 3 4} (sorted-map 4 6 2 5)])
 
 (defn give-me-some-sets []
   ;return vector containing hashsets and sorted sets
   [#{1 2 3 4 5} (sorted-set 2 3 1 5)])
 
 (defn make-list [e1 & rest]
-  (list (conj rest e1)))
+  (apply list (conj rest e1)))
 
 (defn make-vector [e1 & rest]
   (vec (conj rest e1)))
