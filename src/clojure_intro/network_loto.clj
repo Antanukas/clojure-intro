@@ -64,23 +64,7 @@
 ;{:hops hops from roll concated with yourself
 ; :hop-count total amount of hops}
 (defn roll [master]
-  (swap! roll-cnt inc)
-  (let [master-cfg (get-master-configuration master)
-
-        chosen-player (rand-nth (:players master-cfg))
-
-        _ (log! "Choosing player " chosen-player ". Recursion depth:" @roll-cnt)
-        roll-result (if (probable-true (:probability master-cfg))
-                      {:hops []}
-                      (do-roll master (:host chosen-player)))
-
-        find-my-self (fn [master-cfg]
-                       (first (filter (fn [p] (.startsWith (:host p) my-address)) (:players master-cfg))))
-        my-name (:name (find-my-self master-cfg))
-
-        new-hops (cons [my-name my-address] (:hops roll-result))]
-    (swap! roll-cnt dec)
-    {:hops new-hops :hop-count (count new-hops)}))
+  {:hops [["Antanas" "123.32.43.43"] ["Jonas" "123.321.23.22"]] :hop-count 2})
 
 (defn loto-results []
   {:players-left (- (count (:players configuration)) (count @last-loto-result))
