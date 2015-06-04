@@ -38,21 +38,27 @@
 ;Don't use recursion nor map itself
 ;Implement by starting with helper fns
 
-;(reduce (helper inc) '() [[1] [2] [3]]) => (4 3 2)
-;(reduce (helper +) '() [[1 1] [2 2] [3 3]]) => (6 4 2)
+;(apply-and-append inc [] [1]) => [2]
+;(apply-and-append inc [1 2 3] [3]) => [1 2 3 4]
 ;Hints: conj, apply
 (defn apply-and-append [f acc f-args]
   "Applies f to f-args and appends them to acc vector"
   (conj (vec acc) (apply f f-args)))
 
-;(helper-map inc [[1] [2] [3]]) => [2 3 4]
-;(helper-map + [[1 4] [2 5] [3 6]]) => [5 7 9]
-;Hints: reduce, partial
+;(apply-on-every inc [[1] [2] [3]]) => [2 3 4]
+;(apply-on-every + [[1 4] [2 5] [3 6]]) => [5 7 9]
+;Hints: reduce, partial, use apply-and-append
 (defn apply-on-every [f coll]
-  "Applies f to each item in coll and returns resulting seq"
+  "Passes each element in coll as argument to f and returns coll of results"
   (reduce (partial apply-and-append f) '() coll))
 
+;(zip [1 2 3] [4 5 6]) => ((1 4) (2 5) (3 6))
+;(zip [1 2 3]) => ((1) (2) (3))
+(defn zip [& colls]
+  "Given multiple collections creates collection of grouped items"
+  (partition (count colls) (apply interleave colls)))
+
 ;Actual map implementation
+;Combine helpers
 (defn my-map [f & colls]
-  (let [mapping-fn-inputs (partition (count colls) (apply interleave colls))]
-    (apply-on-every f mapping-fn-inputs)))
+  (apply-on-every f (apply zip colls)))
