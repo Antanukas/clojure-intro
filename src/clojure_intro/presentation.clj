@@ -95,16 +95,6 @@
 (defn two-arg-println2 [arg1 arg2]
   (println arg1 arg2))
 
-; symbol-metadata
-(meta #'+)
-
-(with-meta two-arg-println {:doc "Example of function definition"})
-
-(defn ^{:doc "Example of calling functions"} some-documented-function [] (println "Hi"))
-
-(defn some-doc-fn  "This is a documentation" [] (println "Me is some function"))
-
-(defn ^String returns-string [^Integer i ^String text] (println i text))
 
 
 
@@ -124,11 +114,20 @@
 (def truthy :everything-else)
 
 
+
+
+
+
+
+
+
+
+
 "Sequences"
-(map seq?         [[] '() #{} {}]) ;=> (false true  false false)
-(map sequential?  [[] '() #{} {}]) ;=> (true  true  false false)
-(map associative? [[] '() #{} {}]) ;=> (true  false false true)
 (map coll?        [[] '() #{} {}]) ;=> (true  true  true  true)
+(map sequential?  [[] '() #{} {}]) ;=> (true  true  false false)
+(map seq?         [[] '() #{} {}]) ;=> (false true  false false)
+(map associative? [[] '() #{} {}]) ;=> (true  false false true)
 
 (defn always-true [& _] true)
 (defn printer [& args]
@@ -150,33 +149,25 @@
 (keep (fn [item] [item]) [1 2 3])
 (keep-indexed (fn [index item] [index item]) [1 2 3])
 
+;Joining
 (cons 1 [2 3]); append to begining
+(conj [1 2 3] 4)
+(conj '(1 2 3) 4)
 (concat [1 2] [3 4]) ;concats
+
+;Transforming
 (map (fn [item] (repeat 5 item)) [1 2 3]);transforms
 (mapcat (fn [item] (repeat 5 item)) [1 2 3]);transforms and concats
 (map-indexed (fn [i, item] (* i item)) [1 2 3 4])
 (take 12 (cycle [1 2 3]));
 (interleave [1 2 3] ["a" "b" "c"]); almost pairs items
 (interpose "zeparator" '(1 2 3));inserts between items
-(next []);same as rest just returns nil is no more left.
-(butlast [1 2 3]); opsite to next
-(drop-last [1 2 3])
-(drop 5 [1 2 3 4 5 6]);drops items from begining
-(drop-while #(< % 5) [1 3 4 7 5 9]); drops while predicate holds true
-(take-while #(< % 5) [1 3 4 7 5 9])
-;Similar to Scala for-comprehension
 (for [x [1 2 3]
       y ["s" "b"]]
   (do
     (println x " " y)
     [x y]))
-(take 3 [1 2 3 4]); takes first items
-(take-nth 3 [1 2 3 4 5 6]);every nth member
 (flatten [[1 2] '(3 4)])
-(reverse [1 2 3 4])
-(sort  > [5 4 2 3])
-(sort-by :name [{:name "Antanas"}{:name "Jonas"}{:name "Bernardas"}])
-(shuffle [1 2 3])
 (partition 2 [1 2 3 4 5])
 (partition-all 2 [1 2 3 4 5])
 (partition-by :name [{:name "Antanas"}
@@ -185,8 +176,84 @@
                      {:name "Ieva"}
                      {:name "Ieva"}])
 
-;More on sequences
-;TODO destructuring
+
+;Taking
+(next []);same as rest just returns nil is no more left.
+(butlast [1 2 3]); opsite to next
+(drop-last [1 2 3])
+(drop 5 [1 2 3 4 5 6]);drops items from begining
+(drop-while #(< % 5) [1 3 4 7 5 9]); drops while predicate holds true
+(take-while #(< % 5) [1 3 4 7 5 9])
+(first [1 2 3])
+(nth 3 [1 2 3 4])
+(rand-nth [1 2 3 4])
+(take 3 [1 2 3 4]); takes first items
+(take-nth 3 [1 2 3 4 5 6]);every nth member
+;Similar to Scala for-comprehension
+
+;Positioning
+(reverse [1 2 3 4])
+(sort  > [5 4 2 3])
+(sort-by :name [{:name "Antanas"}{:name "Jonas"}{:name "Bernardas"}])
+(shuffle [1 2 3])
+
+;Producing
+(zipmap [1 2 3] ["a" "b" "c"]);Produces map
+;Similar to concat.Doesnt change to list. Works with maps.
+(into {:b  "c"} {:a "b"})
+(set [1 2 3])
+(vec #{1 2 3})
+(list [1 2 3])
+(hash-map :a "a" :b "b")
+(seq(frequencies [1 2 3 4 4 5])); map of frequencies
+
+(reduce (fn [acc, item] (+ acc item)) [1 2 3 4])
+(reduce + [1 2 3 4])
+
+;predicates
+(empty? [])
+(every? odd? [1 3 5])
+(empty? [])
+(some #{1 3} [2 4]); true or nil
+(apply + [1 2 3 4]); looks like reduce
+
+;Creating sequences
+(let [s (lazy-seq (do (Thread/sleep 2000) [1 2 3 4]))]
+  s)
+(repeatedly 5 #(println "test"))
+(take 10 (iterate inc 1))
+(repeat 5 "test")
+(range 1 10)
+(range 1 10 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+"Destructuring"
+
+"In function arguments"
+(defn distance [[x1 y1] [x2 y2]]
+  (let [^2 #(* % %)]
+    (Math/sqrt (+ (^2 (- x2 x1)) (^2 (- y2 y1))))))
+
+"In let"
+(let [data ["Antanas"
+            "Tieto office"
+            "Lead Project Manager"
+            "Not interesting info"
+            "More not interesting info"]
+      [name address job-title & rest] data]
+  (println name " " address " " job-title " " rest))
+
 
 
 

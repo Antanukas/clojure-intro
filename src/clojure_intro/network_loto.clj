@@ -55,8 +55,7 @@
   (swap! roll-cnt inc)
   (let [master-cfg (get-master-configuration master)
 
-        pick-random (fn [seq] (nth seq (rand-int (count seq))))
-        chosen-player (pick-random (:players master-cfg))
+        chosen-player (rand-nth (:players master-cfg))
 
         _ (log! "Choosing player " chosen-player ". Recursion depth:" @roll-cnt)
         roll-result (if (probable-true (:probability master-cfg))
