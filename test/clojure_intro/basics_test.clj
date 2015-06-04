@@ -68,24 +68,22 @@
   (some #(instance? (type (type-factory)) %) elem))
 
 (deftest give-me-some-maps-test
-  (def list-of-maps (give-me-some-maps))
+  (let [list-of-maps (give-me-some-maps)]
 
-  (is (every? map? list-of-maps) "Every item is map")
-  (is (of-type hash-map list-of-maps)
-      "Some items are instances of hash-map")
-  (is (of-type sorted-map list-of-maps)
-      "Some items are instances of sorted-map"))
-
-
+    (is (every? map? list-of-maps) "Every item is map")
+    (is (of-type hash-map list-of-maps)
+        "Some items are instances of hash-map")
+    (is (of-type sorted-map list-of-maps)
+        "Some items are instances of sorted-map")))
 
 (deftest give-me-some-sets-test
-  (def list-of-sets (give-me-some-sets))
+  (let [list-of-sets (give-me-some-sets)]
 
-  (is (every? set? list-of-sets) "Every item is set")
-  (is (of-type hash-set list-of-sets)
-      "Some Items are instances of hash-set")
-  (is (of-type sorted-set list-of-sets)
-      "Some Items are instances of sorted-set"))
+    (is (every? set? list-of-sets) "Every item is set")
+    (is (of-type hash-set list-of-sets)
+        "Some Items are instances of hash-set")
+    (is (of-type sorted-set list-of-sets)
+        "Some Items are instances of sorted-set")))
 
 (deftest make-list-test
   (is (list? (make-list 1 2)) "Returned type shoulb be list")
