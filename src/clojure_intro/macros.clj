@@ -7,7 +7,7 @@
 ; simboliai
 
 (defmacro unless [condition body]
-  (if condition nil body))
+  `(if ~condition nil ~body))
 
 ;(defn helper [form]
 ;  (if (or (number? form) (< (count form) 3))

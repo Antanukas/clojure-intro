@@ -12,6 +12,7 @@
 (comment (def my-ip
   (->>
     (enumeration-seq (NetworkInterface/getNetworkInterfaces))
+    ;TODO for wlan it is probably named differently
     (filter #(= (.getName %) "eth0"))
     (first)
     (.getInterfaceAddresses)
@@ -40,9 +41,6 @@
 (defn- get-json [url]
   (:body (c/get url {:as :json})))
 
-(defn- do-roll [master host]
-  (get-json (str "http://" host "/roll?master=" master)))
-
 (defn log! [& msgs]
   (println (java.util.Date.) msgs))
 
@@ -51,6 +49,20 @@
   (get-json (str "http://" master "/configuration")))
 
 (def roll-cnt (atom 0))
+
+(defn- do-roll [master host]
+  (get-json (str "http://" host "/roll?master=" master)))
+
+;Algorith:
+; 1. Retrieve node configuration from master
+; 2. Choose random player. Might be self
+; 3. Based on probability from master choose to perform another hop or not (probable-true helper)
+;    To perform roll call do-roll function
+; 4. Resolve you name based on your ip from master config
+; 5. Append yourself to :hops collection
+; 6. Return structure:
+;{:hops hops from roll concated with yourself
+; :hop-count total amount of hops}
 (defn roll [master]
   (swap! roll-cnt inc)
   (let [master-cfg (get-master-configuration master)
