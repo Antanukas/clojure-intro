@@ -11,7 +11,7 @@
                  [clj-http "1.1.2"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler clojure-intro.network-loto/app
-         :max-threads 200}
+         :max-threads 2000}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring-mock "0.1.5"]]}}

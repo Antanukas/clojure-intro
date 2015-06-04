@@ -28,7 +28,7 @@
                  {:host "localhost:3002" :name "3002"}
                  {:host "localhost:3003" :name "3003"}
                  {:host "localhost:3004" :name "3004"}]
-   :probability (/ 1 200)})
+   :probability (/ 1 400)})
 
 ;Some state
 (def last-loto-result (atom []))
