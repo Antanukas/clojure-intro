@@ -15,8 +15,8 @@
     (=
       (set coll)
       (set (concat
-             (filter (equal-to n) coll)
-             (filter (complement (equal-to n)) coll))))))
+             (filter (equal-to-fn n) coll)
+             (filter (complement (equal-to-fn n)) coll))))))
 
 (deftest set->predicate-test
   (is (= '(2) (filter (set->predicate #{1 2 3}) [0 2 4 6])))
