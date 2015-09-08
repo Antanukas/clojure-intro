@@ -39,6 +39,10 @@
 
   "First realease: 2007, last release 2015 June 30 (2 months ago)"])
 
+"Eric S. Raymond:
+  Lisp is worth learning for the profound enlightenment experience you will have when you finally get it;
+  that experience will make you a better programmer for the rest of your days, even if you never actually use Lisp itself a lot."
+
 
 
 
@@ -90,7 +94,7 @@
 
 
 
-(def what-is-functional-language?
+(def clojure-functionl-features
   [:first-class-functions "Functions can be passed as arguments to other functions"
 
    :higher-order-functions "Functions accepting other functions as parameters"
@@ -203,6 +207,8 @@
 ;applying functions
 (apply two-arg-println ["arg1" "arg2"])
 
+(defn varargs [& args]
+  (println args))
 
 
 
@@ -233,11 +239,6 @@
 (map sequential?  [[] '() #{} {}]) ;=> (true  true  false false)
 (map seq?         [[] '() #{} {}]) ;=> (false true  false false)
 (map associative? [[] '() #{} {}]) ;=> (true  false false true)
-
-(defn always-true [& _] true)
-(defn printer [& args]
-  (println args)
-  true)
 
 (def all-collections [[1 2 3] '(1 2 3) #{1 2 3} {:a 1 :b 2 :c 3}])
 (def list-and-vector [[1 2 3] '(1 2 3)])
