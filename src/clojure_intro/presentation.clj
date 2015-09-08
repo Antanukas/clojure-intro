@@ -27,15 +27,17 @@
 
 
 
-(def history
-  ["Clojure is dialect of Lisp."
+(def history-facts
+  ["Clojure is dialect of Lisp (List processing)."
 
   "Lisp first apeard in 1958. John McCarthy: 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I'"
   "John McCarthy was born in Boston, Massachusetts on September 4, 1927 to an Irish immigrant father and a Lithuanian Jewish immigrant mother."
 
-  "Second oldest PL. Older is only Fortran(1957)."
+  "Second oldest PL. Older is only Fortran (1957)."
 
-  "Other popular dialects: Common Lisp, Scheme."])
+  "Other popular dialects: Common Lisp, Scheme."
+
+  "First realease: 2007, last release 2015 June 30 (2 months ago)"])
 
 
 
@@ -73,7 +75,9 @@
      :js  "https://github.com/clojure/clojurescript"
      :jvm "https://github.com/clojure/clojure"}
 
-  "Clojure is impure functional programming language."])
+  "Clojure is impure functional programming language."
+
+  "Clojure is dynamic stronlgy types language."])
 
 
 
@@ -99,7 +103,7 @@
 
    :immutable-state "When appending to a list new list with appended element is returned"])
 
-"Clojure has all this together with a safe way to represent state using STM in conccurent application"
+"Clojure has all this together with a safe way to represent state using STM in concurrent application"
 
 
 
@@ -120,6 +124,8 @@
   [:repl
 
   :datatypes
+
+  :namespaces
 
   :first-class-functions
 
@@ -180,6 +186,7 @@
 (println "arg1" "arg2")
 
 ;C => ((1 + 2) * (3 + 4)) / 2
+;!No operator precedence
 (/ (* (+ 1 2) (+ 3 4)) 2)
 
 ;defining-functions
