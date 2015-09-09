@@ -51,6 +51,7 @@
 ;(blank? "")         ;=> true
 ;Return true for nil despite java implementation
 ;Some Java interop done for you
+;Remember string is also a sequence
 (defn- is-whitespace? [char] (Character/isWhitespace char))
 (defn blank? [s]
   "Tells if string s contains only blanks"
@@ -68,8 +69,7 @@
   "Returns only distinct arguments"
   (distinct args))
 
-;(concat-me-collections 1 [2 3 4] [5 6 7] => [1 2 3 4 5 6 7]
-
+;(append-and-concat 1 [2 3 4] [5 6 7] => [1 2 3 4 5 6 7]
 (defn append-and-concat [elem coll1 coll2]
   "Appends elem to begining of 2 concated collections"
   (cons elem (concat coll1 coll2)))
@@ -79,34 +79,9 @@
   "Repeates item five times"
   (repeat 5 item))
 
-;Copyright google translate
-;Hint interleave
-(defn sutarpuok-dvi-kolekcijas [coll1 coll2]
-  "Interleaves two collections"
-  (interleave coll1 coll2))
-
-(defn insert-zero-in-between [coll]
-  "Separates each collection with 0"
-  (interpose 0 coll))
-
-(defn discard-those-three-elements [coll]
-  "Discards first 3 items"
-  (drop 3 coll))
-
-;given sorted sequence of ages [4 5 6 16 18 20 33] return only adults
-;Hint drop-while, remove
-(defn only-adults [coll]
-  "Given sorted seq of numbers representing age
-  returns only adult ages"
-  (drop-while #(< % 18) coll))
-
 ;Just flatten it damn it
 (defn good-old-flatten [coll]
   (flatten coll))
-
-; [1 2 3 4] => [[1 2] [3 4]]
-(defn create-pairs [coll]
-  (partition 2 coll))
 
 (defn is-all-even? [coll]
   "Returns true if all numbers in collection are even"

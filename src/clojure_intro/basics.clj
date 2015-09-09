@@ -1,6 +1,6 @@
 (ns clojure-intro.basics)
 
-;numerics
+;numerics; DO NOT USE use odd?
 (defn is-odd? [x]
   (= 1 (mod x 2)))
 
@@ -13,17 +13,17 @@
 (defn divide [x y]
   (/ x y))
 
-;TODO describe apply
 (defn multiply [& args]
   (apply * args))
 
 (defn increase-by-one [x]
   (inc x))
 
-;strings
+;remember str?
 (defn concat-two-strings [s1 s2]
   (str s1 s2))
 
+;reverse a string
 (defn my-reverse [s1]
   (clojure.string/reverse s1))
 

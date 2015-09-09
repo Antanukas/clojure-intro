@@ -59,32 +59,9 @@
   (prop/for-all [x gen/string]
     (= (duplicate-five-times x) (repeat 5 x))))
 
-(defspec did-you-try-interleave?-test 100
-  (prop/for-all [coll1 (gen/vector gen/int)
-                 coll2 (gen/vector gen/int)]
-    (= (sutarpuok-dvi-kolekcijas coll1 coll2) (interleave coll1 coll2))))
-
-(defspec insert-zero-in-between-test 100
-  (prop/for-all [coll (gen/vector gen/string)]
-    (= (insert-zero-in-between coll) (interpose 0 coll))))
-
-(defspec discard-those-three-elements-test 100
-  (prop/for-all [coll (gen/vector gen/int)]
-    (= (discard-those-three-elements coll) (drop 3 coll))))
-
-(defspec only-adults-test 100
-  (prop/for-all [ages (gen/vector (gen/fmap
-                                    #(Math/abs (mod % 120))
-                                    gen/int))]
-    (= (only-adults ages) (drop-while #(< % 18) ages))))
-
 (defspec good-old-flatten-test 100
   (prop/for-all [coll (gen/vector gen/int)]
     (= (good-old-flatten coll) (flatten coll))))
-
-(defspec create-pairs-test 100
-  (prop/for-all [coll (gen/vector gen/int)]
-    (= (create-pairs coll) (partition 2 coll))))
 
 (defspec is-all-even?-test 100
   (prop/for-all [coll (gen/vector gen/int)]
