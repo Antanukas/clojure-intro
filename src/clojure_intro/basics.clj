@@ -2,72 +2,72 @@
 
 ;numerics; DO NOT USE use odd?
 (defn is-odd? [x]
-  (= 1 (mod x 2)))
+  nil)
 
 (defn sum [x y]
-  (+ x y))
+  nil)
 
 (defn subtr [x y]
-  (- x y))
+  nil)
 
 (defn divide [x y]
-  (/ x y))
+  nil)
 
 (defn multiply [& args]
-  (apply * args))
+  nil)
 
 (defn increase-by-one [x]
-  (inc x))
+  nil)
 
 ;remember str?
 (defn concat-two-strings [s1 s2]
-  (str s1 s2))
+  nil)
 
 ;reverse a string
 (defn my-reverse [s1]
-  (clojure.string/reverse s1))
+  nil)
 
 ;booleans
 (defn is-true? [x]
-  (true? x))
+  nil)
 
 (defn my-not [x]
-  (not x))
+  nil)
 
 (defn my-and [x y]
-  (and x y))
+  nil)
 
 (defn my-or [x y]
-  (or x y))
+  nil)
 
 (defn my-is-nil? [x]
-  (nil? x))
+  nil)
 
 ;Collections
 (defn give-me-some-vector []
-  [1 2 3 4 5])
+  nil)
 
 ;TODO comma thing
 (defn give-me-some-list []
-    '(1 2 3 4 5))
+  nil)
 
 (defn give-me-some-maps []
   ;return vector containing hashmaps and sorted maps
-  [{1 2 3 4} (sorted-map 4 6 2 5)])
+  nil)
 
 (defn give-me-some-sets []
   ;return vector containing hashsets and sorted sets
-  [#{1 2 3 4 5} (sorted-set 2 3 1 5)])
+  nil)
 
 (defn make-list [e1 & rest]
-  (apply list (conj rest e1)))
+  nil)
 
 (defn make-vector [e1 & rest]
-  (vec (conj rest e1)))
+  nil)
 
 (defn make-hash-map [& entries]
-  (apply hash-map entries))
+  nil)
 
 (defn make-set [& values]
-  (set values))
+  nil)
 
