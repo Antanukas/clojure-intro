@@ -1,14 +1,17 @@
 (ns clojure-intro.presentation-tieto-conf
   (:import (clojure.lang ExceptionInfo)))
 
-(def agenda
-  ["Basics Theaory"
 
-  "Basics Practice"
+(def title "")
+
+(def agenda
+  ["Clojure Basics"
+
+  "Clojure Basics Practice"
 
   "Explore webapp written in Clojure"
 
-  "Try finishing the implmentation of webapp"])
+  "Try finishing the implementation of webapp"])
 
 
 
@@ -43,6 +46,7 @@
     Lisp is worth learning for the profound enlightenment experience you will have when you finally get it;
     that experience will make you a better programmer for the rest of your days, even if you never actually use Lisp itself a lot."
 
+  "Motivation: simplicity - building solutions with complext tools on complex infrastructure will make your solution more complex "
   "Success stories: http://cognitect.com/clojure#successstories" ])
 
 
@@ -59,18 +63,18 @@
 
 
 
-(def clojure-functionl-features
+(def functionl-features-programming
   [:first-class-functions "Functions can be passed as arguments to other functions"
 
    :higher-order-functions "Functions accepting other functions as parameters"
 
    :pure-functions "Functions without side-effects. Alayws return same result when given same input"
 
+   :immutable-state "When appending to a list new list with appended element is returned"
+
    :looping-with-recursion "Looping is done using recursion. No for, while, repeat etc."
 
-   :emphasizes-lazy-evalution "Lazyness everywhere"
-
-   :immutable-state "When appending to a list new list with appended element is returned"])
+   :emphasizes-lazy-evalution "Lazyness everywhere"])
 
 "Clojure has all this together with a safe way to represent state using STM in concurrent application"
 
@@ -110,7 +114,7 @@
      :js  "https://github.com/clojure/clojurescript"
      :jvm "https://github.com/clojure/clojure"}
 
-  "Clojure is impure functional programming language."
+  "Clojure is impure functional programming language. (Clojure is not Haskell)"
 
   "Clojure is dynamic stronlgy types language."])
 
@@ -153,12 +157,12 @@
 
   :macros
 
-  :jvm-interop])
+  :java-interop])
 
 
 
 
-(def namespaces "This file is located in " clojure-intro.presentation-tieto-conf)
+(def namespaces "This file is located in " 'clojure-intro.presentation-tieto-conf)
 
 
 (def data-types
@@ -242,13 +246,13 @@
 
 
 
-"Very rich sequence Api"
+"Very rich collection Api"
 
-"4 Types of sequences:"
-{:vectors [1 2 3 4] (vector 1 2 3 4) (vec '(1 2 3))
- :lists '(1 2 3 4) (list 1 2 3 4)
- :sets #{1 2 3 4} (hash-set 1 2 3 3 3) (sorted-set 1 2 3 4 4)
- :maps {:key "value" 1 "1value"} (hash-map :key1 "val" :key2 "val2") (sorted-map 1 2 3 4)}
+"4 Types of collection:"
+{:vectors [[1 2 3 4] (vector 1 2 3 4) (vec '(1 2 3))]
+ :lists ['(1 2 3 4) (list 1 2 3 4)]
+ :sets [#{1 2 3 4} (hash-set 1 2 3 3 3) (sorted-set 1 2 3 4 4)]
+ :maps [{:key "value" 1 "1value"} (hash-map :key1 "val" :key2 "val2") (sorted-map 1 2 3 4)]}
 
 "Taken from http://clojure.org/sequences"
 
@@ -305,7 +309,6 @@
 (first [1 2 3])
 (nth [1 2 3 4] 3)
 (rand-nth [1 2 3 4])
-(take 3 [1 2 3 4]); takes first items
 (take-nth 3 [1 2 3 4 5 6]);every nth member
 ;Similar to Scala for-comprehension
 
@@ -346,7 +349,7 @@
 (repeatedly 5 #(println "test"))
 (take 10 (iterate inc 1))
 (repeat 5 "test")
-(range 1 10)
+(range 1 11)
 (range 1 10 2)
 
 ;Throwing exceptions
@@ -361,7 +364,7 @@
 ;Flow structures
 (let [name "Antanas"
       age 26]
-  (if (= age 25)
+  (if (= age 26)
     (println name "is 25 years old")
     (println name "is not 25 but is" age)))
 

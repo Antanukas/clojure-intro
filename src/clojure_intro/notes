@@ -1,0 +1,84 @@
+Agenda
+
+Start with comic opened
+
+Agenda:
+
+I will start with a presentation of Clojure features that can be used to start developing smth working.
+At first I gonna give you some history insights folloed by clojure syntax explanation and
+examples
+Later I hope you will be able to do something yourself. By implementing couple of functions
+This will help you familiarize with the tooling at hand and some Clojure code
+
+
+
+History:
+
+Clojure is a dialect of lisp. Lisp is really old PL invented in 1957 by John McCarthy.
+Interesting thing is that John's mother was Lithuanian :)
+Over time Lisp have had many dialects but main principles were left intact.
+Clojure is most popular dialect of Lisp so far.
+
+Motivation: simplicity - building solutions with complext tools on complex infrastructure will make your solution more complex.
+
+Functional programming
+
+Clojure is functional language. But what is FL?
+There is not concrete definition outhere.
+One of definitions could look like this:
+FL should have such properties:
+    * First class Fns - functions can be passed the same way other types are.
+    * Higher order fns - functions that take other functions as parameters
+    * Encourage purity - functions without side effects
+    * Immutable state - nothing can be mutated. No setters etc.
+    * No imperative looping - no for while repeat or similar loops because they will introduce state.
+      Remember - everything is immutable.
+    * Lazy evaluation
+
+Lisp is feimus for its homoiconicity. In Clojure code is data. You can manipulate Clojure code using Clojure code.
+This is done using Macros. Clojure are much more powerful then C macros or even newly introduced Scala macros.
+Because of that Clojure itself has very small core everything else is just macros. This way Clojure can be extended endlessly.
+
+All clojure code is written using s-expressions.
+Clojure syntax is very simple. Everything is written like (function_or_macro "arg1" "arg2" "..." "argn")
+Arithmetic doesn't have any operator precedence because these are just ordinary function calls
+Clojure was design to be hosted language. Currently there is 3 implementations.
+
+Remember when I talked about FN. Clojure is functional language but impure.
+Well Clojure takes a very practical approach. Functional programming in theaory is a nice thing
+however you can't create good things without state. So clojure provides threadsafe primitives
+for state mutation. So thats why it is called impure.
+
+Clojure is dynamic and strongly types. You can't add 1 integer to string "1"
+
+
+Here are clojure features I will try to cover today.
+We will meet REPL used for interactive development. No more build deploy cycles.
+Talk about data types in clojure
+Namespaces are used for grouping fns (java packages)
+We will see first class functions in action as well as immutability.
+You will use lazy sequences without even knowing that.
+How to handle errors?
+
+Today we will not talk about advanced topics like concurrent programming,
+runtime polymorphism - an alternative in clojure to smth like OOP polymorphism
+macros and you also won't see much Java interop.
+
+So as I said namespaces here are for grouping our functions.
+E.g in this namespace I have defined all presentation related stuff.
+For this workshop imagine that namespaces are packages.
+
+Clojure data types. Clojure has really similar datatypes as Java.
+We have numbers - integers, doubles, bigdecimals.
+One unique clojure type for numbers is Ratio.
+Strings are really a java String (class String). Also all operations that work with sequences work with strings.
+Characters are also java characters
+Booleans. Just Clojure treats truth differently then Java. We will see that later.
+Keywords are special to Clojure. For now lets assume they are great keys for maps
+Symbols are special type too. funciton names, variables names are all symbols.
+List is an immutable linked list
+Vector immutable array list.
+Set - immutable set
+map - immutable map.
+
+
