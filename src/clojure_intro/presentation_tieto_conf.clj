@@ -70,7 +70,7 @@
 
    :pure-functions "Functions without side-effects. Alayws return same result when given same input"
 
-   :immutability "When appending to a list new list with appended element is returned"
+     :immutability "When appending to a list new list with appended element is returned"
 
    :looping-with-recursion "Looping is done using recursion. No for, while, repeat etc."
 
