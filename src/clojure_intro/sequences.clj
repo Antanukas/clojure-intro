@@ -21,7 +21,7 @@
   that returns true if x is in the set"
   nil)
 
-;some? identity
+;some? identity, filter first
 (defn first-not-null [& args]
   "Returns first not null argument or null"
   nil)
@@ -29,8 +29,9 @@
 ;(filter (pred-and pos? even?) [1 2 -4 0 6 7 -3]) => [2 6]
 ;(filter (pred-and pos? odd?) [1 2 -4 0 6 7 -3]) ;=> [1 7]
 ;(filter (pred-and (complement nil?) empty?) [[] '() nil {} #{}]) => [[] '() {} #{}]
+;and
 (defn pred-and [pred1 pred2]
-  "Given 2 single ar predicate returns 'and' predicate"
+  "Given 2 single arg predicate returns 'and' predicate"
   nil)
 
 ;From Apache Commons
