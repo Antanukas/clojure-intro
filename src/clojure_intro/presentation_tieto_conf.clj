@@ -1,5 +1,4 @@
-(ns clojure-intro.presentation-tieto-conf
-  (:import (clojure.lang ExceptionInfo)))
+(ns clojure-intro.presentation-tieto-conf)
 
 
 
@@ -59,14 +58,12 @@
 (def history-facts
   ["Clojure is dialect of Lisp (List processing)."
 
+   "Created by Rich Hickey. First realease: 2007, last release 2015 June 30 (2 months ago)"
+
   "Lisp first apeard in 1958. John McCarthy: 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I'"
   "John McCarthy was born in Boston, Massachusetts on September 4, 1927 to an Irish immigrant father and a Lithuanian Jewish immigrant mother."
 
   "Second oldest PL. Older is only Fortran (1957)."
-
-  "Other popular dialects: Common Lisp, Scheme."
-
-  "First realease: 2007, last release 2015 June 30 (2 months ago)"
 
   "Eric S. Raymond:
     Lisp is worth learning for the profound enlightenment experience you will have when you finally
@@ -74,7 +71,8 @@
      even if you never actually use Lisp itself a lot."
 
   "Motivation: simplicity - building solutions with complext tools on complex infrastructure
-      will make your solution more complex "
+      will make your solution more complex."
+
   "Success stories: http://cognitect.com/clojure#successstories" ])
 
 
@@ -98,7 +96,7 @@
 
    :pure-functions "Functions without side-effects. Alayws return same result when given same input"
 
-     :immutability "When appending to a list new list with appended element is returned"
+   :immutability "When appending to a list new list with appended element is returned"
 
    :looping-with-recursion "Looping is done using recursion. No for, while, repeat etc."
 
@@ -132,8 +130,6 @@
 
   "Whole code is written in s-expressions (parenthesized lists)."
 
-  "Lists everywhere (or vectors and maps in Clojure)."
-
   "Whole syntax can be desribed like that:" (function_or_macro "arg1" "arg2" "..." "argn")
 
   "Arithmetic in Polish prefix notation:" (+ 1 2(* 3 4) (/ 5 6) (- 7 8))
@@ -145,7 +141,7 @@
 
   "Clojure is impure functional programming language. (Clojure is not Haskell)"
 
-  "Clojure is dynamic strongly types language."])
+  "Clojure is dynamic strongly typed language."])
 
 
 
@@ -177,8 +173,6 @@
 
   :lazy-sequences
 
-  :exceptions
-
   ;Won't be covered
   :concurrent-programming [:stm :refs :atoms :agents :vars]
 
@@ -191,7 +185,16 @@
 
 
 
+
+
+
+
+
+
+
+
 (def namespaces "This file is located in " 'clojure-intro.presentation-tieto-conf)
+
 
 
 (def data-types
@@ -245,33 +248,20 @@
 (defn two-arg-println2 [arg1 arg2]
   (println arg1 arg2))
 
-;applying functions: supply a function and a collection of arguments for that function
-(apply two-arg-println ["arg1" "arg2"])
-
 (defn varargs [& args]
   (println args))
 
 
-
-
-
-
 (def falsy [false nil])
 (def truthy :everything-else)
-; true or false?
-(and true "I am true")
-
-(and false "I am not true")
-
-(and nil "I am not true")
 
 
-
-
-
-
-
-
+;Flow structures
+(let [name "Antanas"
+      age 26]
+  (if (= age 26)
+    (println name "is 25 years old")
+    (println name "is not 25 but is" age)))
 
 
 
@@ -315,6 +305,19 @@
 "Soooo how much functions do we have here?"
 (count (set (flatten (remove string? sequence-operations))))
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ;Joining
 (cons 1 [2 3]); append to begining
 (conj [1 2 3] 4)
@@ -324,53 +327,22 @@
 ;Transforming
 (map (fn [item] (repeat 5 item)) [1 2 3]);transforms
 (mapcat (fn [item] (repeat 5 item)) [1 2 3]);transforms and concats
-(take 12 (cycle [1 2 3]));
-
-(partition 2 [1 2 3 4 5])
-(partition-all 2 [1 2 3 4 5])
-(partition-by :name [{:name "Antanas"}
-                     {:name "Antanas"}
-                     {:name "Jonas"}
-                     {:name "Ieva"}
-                     {:name "Ieva"}
-                     {:name "Antanas"}]) ;Danger this goes to different portion
-
-(first [1 2 3])
-(nth [1 2 3 4] 3)
-(rand-nth [1 2 3 4])
-(take-nth 3 [1 2 3 4 5 6]);every nth member
-;Similar to Scala for-comprehension
-
-;Positioning
-(reverse [1 2 3 4])
-(sort > [5 4 2 3])
-(sort-by :name [{:name "Antanas"}{:name "Jonas"}{:name "Bernardas"}])
-
-;Producing
-(zipmap [1 2 3] ["a" "b" "c"]);Produces map
-;Similar to concat.Doesnt change to list. Works with maps.
-(set [1 2 3])
-(vec #{1 2 3})
-(vector 1 2 3)
-(list 1 2 3)
-(hash-map :a "a" :b "b")
-(frequencies [1 2 3 4 4 5]); map of frequencies
-
-(reduce (fn [acc, item] (+ acc item)) [1 2 3 4])
-(reduce + [1 2 3 4])
-
-;predicates
-(empty? [])
-(every? odd? [1 3 5])
-(some #{1 3} [2 4]); true or nil
-(apply + [1 2 3 4]); looks like reduce
+(flatten (mapcat (fn [item] (repeat 5 item)) [1 2 3]));transforms and concats
 
 (filter empty? [[] [1 2] [] [3 4]])
 (filter (complement empty?) [[] [1 2] [] [3 4]])
 (remove empty? [[] [1 2] [] [3 4]])
-
-;find
 (first (filter odd? [2 4 1 6 5]))
+
+(reduce (fn [acc, item] (+ acc item)) [1 2 3 4])
+(reduce + [1 2 3 4])
+
+(nth [1 2 3 4] 3)
+(rand-nth [1 2 3 4])
+(take-nth 3 [1 2 3 4 5 6]);every nth member
+
+;Positioning
+(reverse [1 2 3 4])
 
 ;lazy sequences
 (let [s (lazy-seq (do (Thread/sleep 2000) [1 2 3 4]))]
@@ -380,59 +352,3 @@
 (repeat 5 "test")
 (range 1 11)
 (range 1 10 2)
-
-;Throwing exceptions
-(try
-  (throw (ex-info "Message2" {:my-random-data "aaa"}))
-  (catch ExceptionInfo e
-    (println (.getMessage e))
-    (println (ex-data e)))
-  (finally (println "Oh finally")))
-
-
-;Flow structures
-(let [name "Antanas"
-      age 26]
-  (if (= age 26)
-    (println name "is 25 years old")
-    (println name "is not 25 but is" age)))
-
-
-
-
-"Destructuring"
-
-"In function arguments"
-(defn distance [[x1 y1] [x2 y2]]
-  (let [square #(* % %)]
-    (Math/sqrt (+ (square (- x2 x1)) (square (- y2 y1))))))
-
-"In let"
-(let [data ["Antanas"
-            "Tieto office"
-            "Lead Project Manager"
-            "Not interesting info"
-            "More not interesting info"]
-      [name address job-title & rest] data]
-  (println name address job-title (apply str rest)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

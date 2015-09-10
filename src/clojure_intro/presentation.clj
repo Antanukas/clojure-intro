@@ -1,14 +1,58 @@
 (ns clojure-intro.presentation
   (:import (clojure.lang ExceptionInfo)))
 
+(title "TODO")
+
+(def about-me
+  "Antanas Bastys"
+
+  "Software developer"
+
+  "Java dev for ~5 years."
+
+  "Dreams of using Clojure in production :)")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (def agenda
-  ["Basics Theaory"
+  ["Basics Theory"
 
   "Basics Practice"
 
   "Explore webapp written in Clojure"
 
-  "Try finishing the implmentation of webapp"])
+  "Try finishing the implementation of webapp"])
 
 
 
@@ -55,6 +99,21 @@
 
 
 
+(def clojure-functionl-features
+  [:first-class-functions "Functions can be passed as arguments to other functions"
+
+   :higher-order-functions "Functions accepting other functions as parameters"
+
+   :pure-functions "Functions without side-effects. Alayws return same result when given same input"
+
+   :looping-with-recursion "Looping is done using recursion. No for, while, repeat etc."
+
+   :emphasizes-lazy-evalution "Lazyness everywhere"
+
+   :immutable-state "When appending to a list new list with appended element is returned"])
+
+"Clojure has all this together with a safe way to represent state using STM in concurrent application"
+
 
 
 
@@ -94,30 +153,6 @@
 
 
 
-(def clojure-functionl-features
-  [:first-class-functions "Functions can be passed as arguments to other functions"
-
-   :higher-order-functions "Functions accepting other functions as parameters"
-
-   :pure-functions "Functions without side-effects. Alayws return same result when given same input"
-
-   :looping-with-recursion "Looping is done using recursion. No for, while, repeat etc."
-
-   :emphasizes-lazy-evalution "Lazyness everywhere"
-
-   :immutable-state "When appending to a list new list with appended element is returned"])
-
-"Clojure has all this together with a safe way to represent state using STM in concurrent application"
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -146,7 +181,7 @@
 
   :macros
 
-  :jvm-interop])
+  :java-interop])
 
 
 
