@@ -2,7 +2,33 @@
   (:import (clojure.lang ExceptionInfo)))
 
 
-(def title "")
+
+
+
+
+
+
+
+
+
+
+
+(def title "Experiments with Clojure. How would a Spring developer write REST service in Clojure?")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (def agenda
   ["Clojure Basics"
@@ -43,10 +69,12 @@
   "First realease: 2007, last release 2015 June 30 (2 months ago)"
 
   "Eric S. Raymond:
-    Lisp is worth learning for the profound enlightenment experience you will have when you finally get it;
-    that experience will make you a better programmer for the rest of your days, even if you never actually use Lisp itself a lot."
+    Lisp is worth learning for the profound enlightenment experience you will have when you finally
+     get it; that experience will make you a better programmer for the rest of your days,
+     even if you never actually use Lisp itself a lot."
 
-  "Motivation: simplicity - building solutions with complext tools on complex infrastructure will make your solution more complex "
+  "Motivation: simplicity - building solutions with complext tools on complex infrastructure
+      will make your solution more complex "
   "Success stories: http://cognitect.com/clojure#successstories" ])
 
 
@@ -76,7 +104,8 @@
 
    :emphasizes-lazy-evalution "Lazyness everywhere"])
 
-"Clojure has all this together with a safe way to represent state using STM in concurrent application"
+"Clojure has all this together with a safe way to represent state using STM
+ in concurrent application"
 
 
 
@@ -107,7 +136,7 @@
 
   "Whole syntax can be desribed like that:" (function_or_macro "arg1" "arg2" "..." "argn")
 
-  "Arithmetic in Polish prefix notation:" (+ 1 2 (* 3 4) (/ 5 6) (- 7 8))
+  "Arithmetic in Polish prefix notation:" (+ 1 2(* 3 4) (/ 5 6) (- 7 8))
 
   "Clojure is designed to be hosted language."
     {:clr "https://github.com/clojure/clojure-clr"
@@ -116,7 +145,7 @@
 
   "Clojure is impure functional programming language. (Clojure is not Haskell)"
 
-  "Clojure is dynamic stronlgy types language."])
+  "Clojure is dynamic strongly types language."])
 
 
 

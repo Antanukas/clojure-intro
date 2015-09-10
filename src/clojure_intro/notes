@@ -82,3 +82,39 @@ Set - immutable set
 map - immutable map.
 
 
+
+
+
+Totalisator app.
+Lets now take a look at some webapp written in Clojure.
+Since currently Eurobasket2015 is taking place and Lithuania is a country of basketbal I decided to implement simple
+Totalisator web application. Lets take a look on wokring example. Working example lalala.
+
+Lets see how it looks in code.
+First lest look into the project.clj - file that describes how our project is build. Similar to maven.pom.
+Since I am used to Spring I have structured functions similary. We have controllers, repositories and services
+We have routes defined separately from controllers - the feature I was missing in Spring because of annotations.
+Ring - http server abstraction. Similar to Servlet API just simpler
+Compojure - library on top of ring that atts support for routes
+Prismatic/schema - library opensources by Prismatic for defining types in clojure
+h2 - database
+ragtime - database migrations
+yesql - lightweight library that allows to define SQL in files and compiles them to CLJ functions
+camel-snake-kebab - not related to food at all. For conversion for camel case to snake case and others
+friend - authentication
+clj-jwt authenticatio nusing json web tokens
+webjars
+plugins to allow running jetty as an ring http server with autoreload features
+
+routes.clj - file where all routes gets defined.
+handler.clj - ring configuration like json marshaling and so on goes here.
+contex.clj - configuration of app
+controllers - simple functions to create Ring like responses. Don't do much here.
+queries - load queries from files, write custom queries here.
+services - functions for bussiness logic.
+special user namespace is loaded by the repl.
+
+First task - write a query.
+We need to select all teams based on totalisator id with bets placed for those teams.
+Players can bet for a team to win. We must group all bets for correspoding team.
+Function result should match the Team-With-Bets schema.
