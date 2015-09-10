@@ -2,13 +2,8 @@
 
 ;you can use anything if I haven added comment about restrictions
 
-;numerics; DO NOT USE odd?
-;Fns mod,=
-(defn is-odd? [x]
-  nil)
-
 (defn sum [x y]
-  (+ x y))
+  nil)
 
 (defn subtr [x y]
   nil)
@@ -71,6 +66,11 @@
 ;#{}, hash-set, sorted-set
 (defn give-me-some-sets []
   ;return vector containing hashsets and sorted sets
+  nil)
+
+;DO NOT USE odd?
+;Fns mod,=
+(defn is-odd? [x]
   nil)
 
 ;apply list cons
