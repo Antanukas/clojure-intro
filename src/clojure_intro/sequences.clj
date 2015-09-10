@@ -7,8 +7,8 @@
 (defn sum-fn [f g x]
   nil)
 
-;(filter (equal-to 2) [2 1 3 2.0])    ;=> (2 2.0)
-;(filter (equal-to 2) [3 4 5 6])
+;(filter (equal-to-fn 2) [2 1 3 2.0])    ;=> (2 2.0)
+;(filter (equal-to-fn 2) [3 4 5 6])
 ;Hint use fn or #()
 (defn equal-to-fn [n]
   nil)
@@ -21,7 +21,7 @@
   that returns true if x is in the set"
   nil)
 
-
+;some? identity
 (defn first-not-null [& args]
   "Returns first not null argument or null"
   nil)
